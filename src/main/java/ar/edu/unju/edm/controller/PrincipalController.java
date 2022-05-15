@@ -11,6 +11,8 @@ import ar.edu.unju.edm.model.Mes4;
 import ar.edu.unju.edm.model.Par3;
 import ar.edu.unju.edm.model.Principal;
 import ar.edu.unju.edm.model.Punto10;
+import ar.edu.unju.edm.model.Punto11;
+import ar.edu.unju.edm.model.Punto12;
 import ar.edu.unju.edm.model.Punto8;
 import ar.edu.unju.edm.model.Punto9;
 
@@ -73,17 +75,20 @@ public String getmespage(@RequestParam (name ="num") int num, Model model) {
   
   //punto6
 @GetMapping("/NotaAlumno")
-public String getnotapage(@RequestParam (name ="num") int num, Model model) {
-	String[] aux1= new String[5];
+public String getNotapage(@RequestParam (name ="num") int num, Model model) {
+	String[] aux1= new String[8];
     Alumno6 nota = new Alumno6();
-		for(int i=0;i<5;i++){
+		for(int i=0;i<8;i++){
 			nota.setNum(num);
 			aux1[i] = nota.Nota();
-			  model.addAttribute("nota1", aux1[3]);
-		      model.addAttribute("nota2", aux1[5]);
-		      model.addAttribute("nota3", aux1[7]);
-		      model.addAttribute("nota4", aux1[9]);
-		      model.addAttribute("nota5", aux1[2]);
+			  model.addAttribute("nota1", aux1[0]);
+		      model.addAttribute("nota2", aux1[1]);
+		      model.addAttribute("nota3", aux1[2]);
+		      model.addAttribute("nota4", aux1[3]);
+		      model.addAttribute("nota5", aux1[4]);
+		      model.addAttribute("nota6", aux1[5]);
+		      model.addAttribute("nota7", aux1[6]);
+		      model.addAttribute("nota8", aux1[7]);
 		      num--;
 		}return "punto6";
 }
@@ -109,7 +114,7 @@ public String getSecu3page(@RequestParam (name ="num") int num, Model model) {
  model.addAttribute("cadena",cadena);
  return "Punto9";
 }
- //punto9
+ //punto10
   @GetMapping("/Secuencial4")
   public String getSecu4page(@RequestParam (name ="num") int num, Model model) {
   String cadena;
@@ -118,5 +123,28 @@ public String getSecu3page(@RequestParam (name ="num") int num, Model model) {
   cadena= secu4.Secuencial4();
   model.addAttribute("cadena",cadena);
   return "Punto10";
-}
+  }
+  
+  //punto11
+  @GetMapping("/Secuencial5")
+  public String getSecu5page(@RequestParam (name ="num") int num, Model model) {
+  String cadena;
+  Punto11 secu5 = new Punto11();
+  secu5.setNum(num);
+  cadena= secu5.Secuencial5();
+  model.addAttribute("cadena",cadena);
+  return "Punto11";
+  }
+  
+  //punto12
+  @GetMapping("/Tiempo")
+  public String gettiempopage(@RequestParam (name ="num") int num, Model model) {
+  String ttime;
+  Punto12 tiempo = new Punto12();
+  tiempo.setNum(num);
+  ttime= tiempo.FormulaTiempo();
+  model.addAttribute("ttime",ttime);
+  return "Punto12";
+  }
+  
 }
